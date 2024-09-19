@@ -14,8 +14,27 @@ export interface GetSummaryResponse {
 }
 
 export async function getSummary(): Promise<GetSummaryResponse> {
-  const response = await fetch('http://localhost:3333/summary')
-  const data = await response.json()
-  console.log(data)
-  return data
+  try {
+    // Define the base URL dynamically based on environment
+    const baseUrl = process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:3333' 
+      : 'https://in-orbit-server-ivfk.onrender.com';
+
+    // Make the request to the appropriate URL
+    const response = await fetch(`${baseUrl}/summary`);
+
+    // Check if the response is ok (status in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch summary: ${response.statusText}`);
+    }
+
+    // Parse the response data
+    const data: GetSummaryResponse = await response.json();
+    return data;
+  } catch (error) {
+    // Log error for debugging
+    console.error('Error fetching summary:', error);
+    // Re-throw the error to be handled by the caller if needed
+    throw error;
+  }
 }
