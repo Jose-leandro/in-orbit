@@ -34,7 +34,6 @@ export async function getSummary(): Promise<GetSummaryResponse> {
   } catch (error) {
     // Log error for debugging
     console.error('Error fetching summary:', error);
-    // Re-throw the error to be handled by the caller if needed
     throw error;
   }
 }
