@@ -4,12 +4,12 @@ interface CreateGoalRequest {
 }
 
 // Utility function to get the base URL based on the environment
-function getBaseUrl(): string {
-  if (process.env.NODE_ENV === 'development') {
-    return 'http://localhost:3333';
-  }
-  return 'https://in-orbit-server-ivfk.onrender.com'; 
-}
+// function getBaseUrl(): string {
+//   if (process.env.NODE_ENV === 'development') {
+//     return 'http://localhost:3333';
+//   }
+//   return 'https://in-orbit-server-ivfk.onrender.com'; 
+// }
 
 export async function createGoal({
   title,
