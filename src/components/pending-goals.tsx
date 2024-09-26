@@ -4,14 +4,29 @@ import { getPendingGoals } from '../http/get-pending-goals'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { createGoalCompletion } from '../http/create-goal-completion'
 
+// Define the Goal type
+interface Goal {
+  id: string;
+  title: string;
+  desiredWeeklyFrequency: number;
+  completionCount: number;
+}
+
+// Define the PendingGoalsResponse type
+interface PendingGoalsResponse {
+  pendingGoals: Goal[];
+}
+
 export function PendingGoals() {
   const queryClient = useQueryClient()
 
-  const { data } = useQuery({
+  const { data } = useQuery<PendingGoalsResponse>({
     queryKey: ['pending-goals'],
     queryFn: getPendingGoals,
     staleTime: 1000 * 60, // 60 seconds
   })
+
+  console.log(data)
 
   if (!data) {
     return null
@@ -26,18 +41,16 @@ export function PendingGoals() {
 
   return (
     <div className="flex flex-wrap gap-3">
-      {data.map(goal => {
-        return (
-          <OutlineButton
-            key={goal.id}
-            disabled={goal.completionCount >= goal.desiredWeeklyFrequency}
-            onClick={() => handleCompleteGoal(goal.id)}
-          >
-            <Plus className="size-4 text-zinc-600" />
-            {goal.title}
-          </OutlineButton>
-        )
-      })}
+        {data?.pendingGoals?.map(goal => (
+        <OutlineButton
+          key={goal.id}
+          disabled={goal.completionCount >= goal.desiredWeeklyFrequency}
+          onClick={() => handleCompleteGoal(goal.id)}
+        >
+          <Plus className="size-4 text-zinc-600" />
+          {goal.title}
+        </OutlineButton>
+      ))}
     </div>
   )
 }

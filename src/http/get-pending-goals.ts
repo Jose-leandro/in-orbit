@@ -17,5 +17,4 @@ type PendingGoalsResponse = {
       // Parse the response data
       const data: PendingGoalsResponse = await response.json();
       return data;
-
   }
