@@ -15,7 +15,7 @@ export async function createGoal({
   title,
   desiredWeeklyFrequency,
 }: CreateGoalRequest): Promise<void> {
-  const url = `${getBaseUrl()}/goals`;
+  const url = 'https://in-orbit-server-ivfk.onrender.com/goals';
 
   try {
     const response = await fetch(url, {

@@ -8,7 +8,8 @@ function getBaseUrl(): string {
 
 
 export async function createGoalCompletion(goalId: string) {
-  const url = `${getBaseUrl()}/completions`;
+  // const url = `${getBaseUrl()}/completions`;
+  const url = 'https://in-orbit-server-ivfk.onrender.com/completions';
 
     try {
       const response = await fetch(url, {

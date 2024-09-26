@@ -9,12 +9,12 @@ type PendingGoalsResponse = {
   export async function getPendingGoals(): Promise<PendingGoalsResponse> {
     try {
       // Define the base URL dynamically based on environment
-      const baseUrl = process.env.NODE_ENV === 'development' 
-        ? 'http://localhost:3333' 
-        : 'https://in-orbit-server-ivfk.onrender.com';
+      // const baseUrl = process.env.NODE_ENV === 'development' 
+      //   ? 'http://localhost:3333' 
+      //   : 'https://in-orbit-server-ivfk.onrender.com';
   
       // Make the request to the appropriate URL
-      const response = await fetch(`${baseUrl}/pending-goals`);
+      const response = await fetch('https://in-orbit-server-ivfk.onrender.com/pending-goals');
   
       // Check if the response is ok (status in the range 200-299)
       if (!response.ok) {
