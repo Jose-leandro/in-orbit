@@ -11,7 +11,7 @@ in.rbit é uma aplicação intuitiva e eficiente para definição, organização
 ## 🚀 Status Atual
 
 * ### Versão: 1.0.0
-* ### Deploy of in.orbit in [Deploy](https://inorbit-joseleandros-projects.vercel.app/)
+* ### Deploy of in.orbit in [Deploy](https://in-orbit-joseleandros-projects.vercel.app/)
 
 ## 🌟 Principais Funcionalidades
 - **Cadastro Rápido de metas:** Gerencie suas metas com facilidade e eficiência.
