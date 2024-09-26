@@ -1,10 +1,13 @@
+type Goal = {
+  id: string;
+  title: string;
+  desiredWeeklyFrequency: number;
+  completionCount: number;
+};
+
 type PendingGoalsResponse = {
-    id: string
-    title: string
-    desiredWeeklyFrequency: number
-    completionCount: number
-  }[]
-   
+  pendingGoals: Goal[];
+};
 
   export async function getPendingGoals(): Promise<PendingGoalsResponse> {
     const response = await fetch('https://in-orbit-server-ivfk.onrender.com/pending-goals');

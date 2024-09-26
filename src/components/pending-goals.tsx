@@ -4,23 +4,10 @@ import { getPendingGoals } from '../http/get-pending-goals'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { createGoalCompletion } from '../http/create-goal-completion'
 
-// Define the Goal type
-interface Goal {
-  id: string;
-  title: string;
-  desiredWeeklyFrequency: number;
-  completionCount: number;
-}
-
-// Define the PendingGoalsResponse type
-interface PendingGoalsResponse {
-  pendingGoals: Goal[];
-}
-
 export function PendingGoals() {
   const queryClient = useQueryClient()
 
-  const { data } = useQuery<PendingGoalsResponse>({
+  const { data } = useQuery({
     queryKey: ['pending-goals'],
     queryFn: getPendingGoals,
     staleTime: 1000 * 60, // 60 seconds
